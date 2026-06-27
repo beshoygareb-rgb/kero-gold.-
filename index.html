@@ -6,54 +6,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
     :root {
-        --bg: radial-gradient(circle at top right, #1a1a1a, #000);
-        --glass-bg: rgba(255, 255, 255, 0.05);
+        --bg: #000;
         --gold: #d4af37;
         --border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* تعديل البودي ليأخذ كامل مساحة الشاشة */
-    body { 
-        background: var(--bg); 
-        color: #fff; 
-        font-family: 'Cairo', sans-serif; 
-        margin: 0; 
-        min-height: 100vh; 
-        display: flex; 
-        flex-direction: column; 
-    }
+    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
     
-    .container { 
-        width: 100%; 
-        flex-grow: 1; 
-        display: flex; 
-        flex-direction: column; 
-        padding: 10px; 
-    }
+    .container { width: 100%; flex-grow: 1; display: flex; flex-direction: column; padding: 5px; }
     
-    /* الكارد سيفرد ليملأ الطول والعرض */
     .glass-card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.03);
         border: var(--border);
-        border-radius: 24px;
-        padding: 20px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border-radius: 15px;
+        padding: 15px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
     }
     
-    h1 { color: var(--gold); text-align: center; font-size: 32px; margin: 10px 0; }
-    .live-status { background: rgba(0,0,0,0.3); text-align: center; padding: 8px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; }
-    .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-    .tab { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; border: var(--border); }
-    .tab.active { background: var(--gold); color: #000; }
-    .header-row { display: flex; justify-content: space-between; padding: 0 20px; font-size: 12px; color: #888; margin-bottom: 10px; }
-    .price-card { background: var(--glass-bg); border: var(--border); padding: 18px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .highlight { border: 1px solid var(--gold); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
-    .val { color: #00ff88; font-weight: bold; font-family: monospace; font-size: 18px; }
-    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
-    .box { padding: 15px; border-radius: 15px; text-align: center; border: var(--border); }
+    h1 { color: var(--gold); text-align: center; font-size: 24px; margin: 5px 0; }
+    .live-status { text-align: center; font-size: 12px; margin-bottom: 10px; opacity: 0.7; }
+    .tabs { display: flex; gap: 5px; margin-bottom: 15px; }
+    .tab { flex: 1; padding: 10px; border-radius: 10px; text-align: center; border: var(--border); }
+    .tab.active { background: var(--gold); color: #000; font-weight: bold; }
+    
+    .header-row { display: flex; justify-content: space-between; padding: 0 10px; font-size: 11px; color: #888; margin-bottom: 5px; }
+    .price-card { background: rgba(255, 255, 255, 0.05); border: var(--border); padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+    .highlight { border: 1px solid var(--gold); }
+    .val { color: #00ff88; font-weight: bold; font-family: monospace; font-size: 16px; }
+    
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: auto; }
+    .box { padding: 10px; border-radius: 10px; text-align: center; border: var(--border); font-size: 13px; }
 </style>
 </head>
 <body>
@@ -111,3 +94,4 @@
 </script>
 </body>
 </html>
+
