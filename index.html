@@ -11,12 +11,10 @@
         --gold: #d4af37;
         --border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; display: flex; justify-content: center; min-height: 100vh; }
+    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 20px; }
     
-    /* التعديل هنا: خليته يملأ العرض بالكامل */
-    .container { width: 100%; padding: 10px; }
+    .container { width: 100%; max-width: 450px; padding: 0 10px; }
     
-    /* التصميم الفخم - Glassmorphism */
     .glass-card {
         background: var(--glass-bg);
         backdrop-filter: blur(20px);
@@ -26,7 +24,7 @@
         box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
     h1 { color: var(--gold); text-align: center; font-size: 32px; margin: 20px 0; }
-    .live-status { background: rgba(0,0,0,0.3); text-align: center; padding: 8px; border-radius: 50px; font-size: 14px; }
+    .live-status { background: rgba(0,0,0,0.3); text-align: center; padding: 8px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; }
     .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
     .tab { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; border: var(--border); }
     .tab.active { background: var(--gold); color: #000; }
@@ -59,7 +57,7 @@
         <div id="list"></div>
 
         <div class="bottom-grid">
-            <div class="box" style="border-color:#ff3e3e;">الدولار البنوك<br><b id="usd" style="color:#ff3e3e;">49.49</b></div>
+            <div class="box" style="border-color:#ff3e3e;">سعر دولار البنوك<br><b id="usd" style="color:#ff3e3e;">49.49</b></div>
             <div class="box" style="border-color:#00ff88;">الشاشة العالمية<br><b id="ounce" style="color:#00ff88;">4082.43</b></div>
         </div>
     </div>
