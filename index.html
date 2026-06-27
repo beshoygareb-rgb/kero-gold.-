@@ -11,9 +11,10 @@
         --gold: #d4af37;
         --border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 20px; }
+    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; min-height: 100vh; padding: 10px; }
     
-    .container { width: 100%; max-width: 450px; padding: 0 10px; }
+    /* التعديل هنا: شلنا الـ max-width عشان يملأ عرض الشاشة بالكامل */
+    .container { width: 100%; }
     
     .glass-card {
         background: var(--glass-bg);
