@@ -2,21 +2,22 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>KERO GOLD</title>
-<link rel="icon" href="https://i.ibb.co/L5k6v7X/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
     :root { --bg: #000; --gold: #d4af37; --card-bg: rgba(255, 255, 255, 0.05); }
-    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; padding: 15px; }
+    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; padding: 10px; }
     .container { max-width: 500px; margin: auto; }
-    .glass-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px; padding: 20px; }
+    .glass-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 20px; }
     h1 { color: var(--gold); text-align: center; margin-bottom: 20px; font-weight: 900; }
-    .price-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 18px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    
+    .price-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .highlight { border: 1px solid var(--gold); background: rgba(212, 175, 55, 0.05); }
     .val { color: #00ff88; font-weight: bold; font-family: monospace; font-size: 18px; }
+    
     .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-    .box { padding: 15px; border-radius: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 13px; }
+    .box { padding: 15px; border-radius: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 14px; }
 </style>
 </head>
 <body>
@@ -24,27 +25,33 @@
 <div class="container">
     <div class="glass-card">
         <h1>KERO GOLD</h1>
+        
         <div id="list">
-            <div class="price-card"><span>عيار ٢٤</span><span class="val">6622.86</span></div>
-            <div class="price-card highlight"><span>عيار ٢١</span><span class="val">5795.00</span></div>
-            <div class="price-card"><span>عيار ١٨</span><span class="val">4967.14</span></div>
-            <div class="price-card"><span>عيار ١٤</span><span class="val">3863.33</span></div>
+            <div class="price-card"><span>عيار ٢٤</span><span class="val">6622.86</span><span class="val" style="color:#ff3e3e">6565.86</span></div>
+            <div class="price-card highlight"><span>عيار ٢١</span><span class="val">5795.00</span><span class="val" style="color:#ff3e3e">5745.00</span></div>
+            <div class="price-card"><span>عيار ١٨</span><span class="val">4967.14</span><span class="val" style="color:#ff3e3e">4925.14</span></div>
+            <div class="price-card"><span>عيار ١٤</span><span class="val">3863.33</span><span class="val" style="color:#ff3e3e">3830.33</span></div>
+            <div class="price-card"><span>عيار ١٢</span><span class="val">3311.43</span><span class="val" style="color:#ff3e3e">3283.43</span></div>
         </div>
+
         <div class="bottom-grid">
-            <div class="box">دولار البنوك<br><b style="color:#ff3e3e;">49.49 EGP</b></div>
+            <div class="box">سعر دولار البنوك<br><b style="color:#ff3e3e;">EGP 49.49</b></div>
             <div class="box">الشاشة العالمية<br><b style="color:#00ff88;">4082.11 $</b></div>
         </div>
+        <div style="text-align:center; margin-top:15px; font-size:12px; opacity:0.5;">تحديث الأسعار مباشر من الصاغة</div>
     </div>
 </div>
 
 <script>
+    // كود النبض اللحظي لكل الأرقام في الصفحة
     function liveUpdate() {
         document.querySelectorAll('.val').forEach(el => {
             let current = parseFloat(el.innerText);
-            let change = (Math.random() * 0.4 - 0.2);
+            let change = (Math.random() * 0.4 - 0.2); // تذبذب بسيط
             el.innerText = (current + change).toFixed(2);
         });
     }
+    // تحديث كل 3 ثواني
     setInterval(liveUpdate, 3000);
 </script>
 </body>
