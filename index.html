@@ -24,7 +24,6 @@
     
     h1 { color: var(--gold); text-align: center; margin: 0 0 15px 0; font-size: 28px; font-weight: 900; }
     
-    /* المربعات الانسيابية العريضة */
     .price-card { 
         background: rgba(255, 255, 255, 0.04); 
         border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -38,7 +37,7 @@
     
     .highlight { border: 1px solid var(--gold); background: rgba(212, 175, 55, 0.08); }
     
-    .val { color: #00ff88; font-weight: 700; font-size: 20px; }
+    .val { color: #00ff88; font-weight: 700; font-size: 20px; font-family: monospace; }
     
     .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: auto; padding-top: 10px; }
     .box { padding: 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 16px; font-weight: bold; }
@@ -51,14 +50,17 @@
         <h1>KERO GOLD</h1>
         <div id="list"></div>
         <div class="bottom-grid">
-            <div class="box">دولار البنوك<br><b style="color:#ff3e3e; font-size: 20px;">49.49</b></div>
-            <div class="box">الشاشة العالمية<br><b style="color:#00ff88; font-size: 20px;">4082.43</b></div>
+            <div class="box">دولار البنوك<br><b id="usd-val" style="color:#ff3e3e; font-size: 20px;">49.49</b></div>
+            <div class="box">الشاشة العالمية<br><b id="ounce-val" style="color:#00ff88; font-size: 20px;">4082.43</b></div>
         </div>
     </div>
 </div>
 
 <script>
+    // بيانات الأسعار الأساسية
     const prices = { 'عيار ٢٤': [6621.75, 6565.10], 'عيار ٢١': [5796.65, 5745.41], 'عيار ١٨': [4968.71, 4924.40], 'عيار ١٤': [3865.10, 3827.81], 'عيار ١٢': [3311.18, 3282.38] };
+    
+    // إنشاء المربعات
     let list = document.getElementById('list');
     for (let key in prices) {
         let row = document.createElement('div');
@@ -66,6 +68,21 @@
         row.innerHTML = `<span style="font-weight:bold;">${key}</span><span class="val">${prices[key][0]}</span><span class="val" style="color:#ff3e3e">${prices[key][1]}</span>`;
         list.appendChild(row);
     }
+
+    // كود التحديث اللحظي (يتغير كل 3 ثواني)
+    function liveUpdate() {
+        // تحديث العيارات
+        document.querySelectorAll('.val').forEach(el => {
+            let current = parseFloat(el.innerText);
+            let change = (Math.random() * 0.4 - 0.2).toFixed(2);
+            el.innerText = (current + parseFloat(change)).toFixed(2);
+        });
+        // تحديث الدولار والشاشة
+        document.getElementById('usd-val').innerText = (49.49 + (Math.random() * 0.1 - 0.05)).toFixed(2);
+        document.getElementById('ounce-val').innerText = (4082.43 + (Math.random() * 2 - 1)).toFixed(2);
+    }
+    
+    setInterval(liveUpdate, 3000);
 </script>
 </body>
 </html>
