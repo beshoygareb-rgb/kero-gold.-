@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>KERO GOLD</title>
+<title>KERO GOLD LIVE</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
     :root { --bg: #000; --gold: #d4af37; --card-bg: rgba(255, 255, 255, 0.05); }
@@ -24,6 +24,7 @@
     
     h1 { color: var(--gold); text-align: center; margin: 0 0 15px 0; font-size: 28px; font-weight: 900; }
     
+    /* التصميم الانسيابي الموت */
     .price-card { 
         background: rgba(255, 255, 255, 0.04); 
         border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -38,9 +39,6 @@
     .highlight { border: 1px solid var(--gold); background: rgba(212, 175, 55, 0.08); }
     
     .val { color: #00ff88; font-weight: 700; font-size: 20px; font-family: monospace; }
-    
-    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: auto; padding-top: 10px; }
-    .box { padding: 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 16px; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -48,41 +46,47 @@
 <div class="container">
     <div class="glass-card">
         <h1>KERO GOLD</h1>
-        <div id="list"></div>
-        <div class="bottom-grid">
-            <div class="box">دولار البنوك<br><b id="usd-val" style="color:#ff3e3e; font-size: 20px;">49.49</b></div>
-            <div class="box">الشاشة العالمية<br><b id="ounce-val" style="color:#00ff88; font-size: 20px;">4082.43</b></div>
+        
+        <div class="price-card highlight">
+            <span style="font-weight:bold;">عيار ٢١</span>
+            <span id="price-21" class="val">جارٍ الاتصال...</span>
+        </div>
+        
+        <div class="price-card">
+            <span style="font-weight:bold;">عيار ٢٤</span>
+            <span id="price-24" class="val">جارٍ الاتصال...</span>
+        </div>
+        
+        <div class="price-card">
+            <span style="font-weight:bold;">عيار ١٨</span>
+            <span id="price-18" class="val">جارٍ الاتصال...</span>
         </div>
     </div>
 </div>
 
 <script>
-    // بيانات الأسعار الأساسية
-    const prices = { 'عيار ٢٤': [6621.75, 6565.10], 'عيار ٢١': [5796.65, 5745.41], 'عيار ١٨': [4968.71, 4924.40], 'عيار ١٤': [3865.10, 3827.81], 'عيار ١٢': [3311.18, 3282.38] };
-    
-    // إنشاء المربعات
-    let list = document.getElementById('list');
-    for (let key in prices) {
-        let row = document.createElement('div');
-        row.className = 'price-card' + (key.includes('٢١') ? ' highlight' : '');
-        row.innerHTML = `<span style="font-weight:bold;">${key}</span><span class="val">${prices[key][0]}</span><span class="val" style="color:#ff3e3e">${prices[key][1]}</span>`;
-        list.appendChild(row);
+    async function updateGoldPrice() {
+        try {
+            // سحب البيانات من السيرفر
+            let response = await fetch('https://api.gold-api.com/v1/XAU/EGP');
+            let data = await response.json();
+            
+            // حساب الأسعار بناءً على سعر السوق الحالي
+            let price24 = (data.price / 31.1035).toFixed(2);
+            let price21 = (price24 * 0.875).toFixed(2);
+            let price18 = (price24 * 0.75).toFixed(2);
+
+            document.getElementById('price-21').innerText = price21;
+            document.getElementById('price-24').innerText = price24;
+            document.getElementById('price-18').innerText = price18;
+        } catch (error) {
+            document.getElementById('price-21').innerText = "خطأ";
+        }
     }
 
-    // كود التحديث اللحظي (يتغير كل 3 ثواني)
-    function liveUpdate() {
-        // تحديث العيارات
-        document.querySelectorAll('.val').forEach(el => {
-            let current = parseFloat(el.innerText);
-            let change = (Math.random() * 0.4 - 0.2).toFixed(2);
-            el.innerText = (current + parseFloat(change)).toFixed(2);
-        });
-        // تحديث الدولار والشاشة
-        document.getElementById('usd-val').innerText = (49.49 + (Math.random() * 0.1 - 0.05)).toFixed(2);
-        document.getElementById('ounce-val').innerText = (4082.43 + (Math.random() * 2 - 1)).toFixed(2);
-    }
-    
-    setInterval(liveUpdate, 3000);
+    // التحديث أوتوماتيك كل 15 دقيقة
+    updateGoldPrice();
+    setInterval(updateGoldPrice, 900000);
 </script>
 </body>
 </html>
