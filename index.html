@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>Kero Gold | Premium Live Radar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: radial-gradient(circle at top right, #1a1a1a, #000);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --gold: #d4af37;
-            --border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; display: flex; justify-content: center; padding: 20px; min-height: 100vh; }
-        .container { width: 100%; max-width: 450px; }
-        
-        /* التصميم الفخم - Glassmorphism */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: var(--border);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        h1 { color: var(--gold); text-align: center; font-size: 32px; margin: 20px 0; }
-        .live-status { background: rgba(0,0,0,0.3); text-align: center; padding: 8px; border-radius: 50px; font-size: 13px; border: var(--border); margin-bottom: 20px; }
-        
-        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tab { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; border: var(--border); font-weight: bold; transition: 0.3s; }
-        .tab.active { background: var(--gold); color: #000; }
-
-        .header-row { display: flex; justify-content: space-between; padding: 0 20px; font-size: 12px; color: #888; margin-bottom: 10px; }
-        .price-card { background: rgba(255,255,255,0.03); border: var(--border); padding: 18px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .highlight { border: 1px solid var(--gold); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
-        .val { color: #00ff88; font-weight: bold; font-family: monospace; font-size: 18px; }
-
-        .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .box { padding: 15px; border-radius: 15px; text-align: center; border: var(--border); }
-    </style>
+<meta charset="UTF-8">
+<title>Kero Gold | Premium Live Radar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: radial-gradient(circle at top right, #1a1a1a, #000);
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --gold: #d4af37;
+        --border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; margin: 0; display: flex; justify-content: center; min-height: 100vh; }
+    
+    /* التعديل هنا: خليته يملأ العرض بالكامل */
+    .container { width: 100%; padding: 10px; }
+    
+    /* التصميم الفخم - Glassmorphism */
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: var(--border);
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    h1 { color: var(--gold); text-align: center; font-size: 32px; margin: 20px 0; }
+    .live-status { background: rgba(0,0,0,0.3); text-align: center; padding: 8px; border-radius: 50px; font-size: 14px; }
+    .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .tab { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; border: var(--border); }
+    .tab.active { background: var(--gold); color: #000; }
+    .header-row { display: flex; justify-content: space-between; padding: 0 20px; font-size: 12px; color: #888; margin-bottom: 10px; }
+    .price-card { background: var(--glass-bg); border: var(--border); padding: 18px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .highlight { border: 1px solid var(--gold); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
+    .val { color: #00ff88; font-weight: bold; font-family: monospace; font-size: 18px; }
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .box { padding: 15px; border-radius: 15px; text-align: center; border: var(--border); }
+</style>
 </head>
 <body>
 
 <div class="container">
     <div class="glass-card">
         <h1>KERO GOLD</h1>
-        <div class="live-status">● مباشر من سوق الصاغة والبورصة</div>
-
+        <div class="live-status">• مباشر من سوق الصاغة والبورصة</div>
+        
         <div class="tabs">
             <div id="btn-gold" class="tab active" onclick="setMode('gold')">أسعار الذهب</div>
             <div id="btn-silver" class="tab" onclick="setMode('silver')">أسعار الفضة</div>
@@ -61,8 +59,8 @@
         <div id="list"></div>
 
         <div class="bottom-grid">
-            <div class="box" style="border-color:#ff3e3e;">دولار البنوك<br><b id="usd" style="color:#ff3e3e;">49.49</b></div>
-            <div class="box" style="border-color:#00ff88;">الشاشة العالمية<br><b id="ounce" style="color:#00ff88;">4082.11</b></div>
+            <div class="box" style="border-color:#ff3e3e;">الدولار البنوك<br><b id="usd" style="color:#ff3e3e;">49.49</b></div>
+            <div class="box" style="border-color:#00ff88;">الشاشة العالمية<br><b id="ounce" style="color:#00ff88;">4082.43</b></div>
         </div>
     </div>
 </div>
@@ -70,44 +68,28 @@
 <script>
     let mode = 'gold';
     const prices = {
-        gold: { "٢٤": [6622.86, 6565.86], "٢١ ⭐": [5795.00, 5745.00], "١٨": [4967.14, 4925.14], "١٤": [3863.33, 3830.33], "١٢": [3311.43, 3283.43] },
-        silver: { "٩٩٩": [45.20, 44.50], "٩٢٥": [42.10, 41.60], "٩٠٠": [39.80, 39.20], "٨٠٠": [35.50, 34.90] }
+        gold: { 'عيار ٢٤': [6621.75, 6565.10], 'عيار ٢١': [5796.65, 5745.41], 'عيار ١٨': [4968.71, 4924.40], 'عيار ١٤': [3865.10, 3827.81], 'عيار ١٢': [3311.18, 3282.38] },
+        silver: { 'فضة ٩٩٩': [45.20, 44.50], 'فضة ٩٢٥': [42.10, 41.60], 'فضة ٩٠٠': [39.80, 39.20], 'فضة ٨٠٠': [35.50, 34.90] }
     };
 
     function setMode(m) {
         mode = m;
         document.getElementById('btn-gold').className = 'tab ' + (m==='gold'?'active':'');
         document.getElementById('btn-silver').className = 'tab ' + (m==='silver'?'active':'');
+        render();
+    }
+
+    function render() {
         let list = document.getElementById('list');
         list.innerHTML = '';
-        for (let k in prices[m]) {
-            let highlight = (mode === 'gold' && k === "٢١ ⭐") ? 'highlight' : '';
-            list.innerHTML += `
-            <div class="price-card ${highlight}">
-                <span>عيار ${k}</span>
-                <span class="val" id="b-${k}">${prices[m][k][0].toFixed(2)}</span>
-                <span class="val" id="s-${k}">${prices[m][k][1].toFixed(2)}</span>
-            </div>`;
+        for (let key in prices[mode]) {
+            let row = document.createElement('div');
+            row.className = 'price-card' + (key.includes('٢١') ? ' highlight' : '');
+            row.innerHTML = `<span>${key}</span><span class="val">${prices[mode][key][0]}</span><span class="val" style="color:#ff3e3e">${prices[mode][key][1]}</span>`;
+            list.appendChild(row);
         }
     }
-
-    function update() {
-        for (let m in prices) {
-            for (let k in prices[m]) {
-                prices[m][k][0] += (Math.random() - 0.5) * 1.5;
-                prices[m][k][1] += (Math.random() - 0.5) * 1.5;
-                if (m === mode) {
-                    if(document.getElementById(`b-${k}`)) document.getElementById(`b-${k}`).innerText = prices[m][k][0].toFixed(2);
-                    if(document.getElementById(`s-${k}`)) document.getElementById(`s-${k}`).innerText = prices[m][k][1].toFixed(2);
-                }
-            }
-        }
-        document.getElementById('usd').innerText = (49.49 + (Math.random()-0.5)*0.02).toFixed(2);
-        document.getElementById('ounce').innerText = (4082.11 + (Math.random()-0.5)*2).toFixed(2);
-    }
-
-    setMode('gold');
-    setInterval(update, 2000);
+    render();
 </script>
 </body>
 </html>
